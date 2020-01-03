@@ -1,68 +1,94 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React Refresher Quiz
 
-## Available Scripts
+## Scenario 1
 
-In the project directory, you can run:
+```js
+class App extends React.Component {
+  state = {
+    loggedInUser: { name: "Izzi", id: 12345 }
+  };
 
-### `npm start`
+  render() {
+    const { loggedInUser } = this.state;
+    return (
+      <div>
+        <Header currentUser={loggedInUser} />
+        <p>Lorem ipsum...</p>
+      </div>
+    );
+  }
+}
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+const Header = ({ loggedInUser }) => {
+  return <h1>Welcome {loggedInUser.name}</h1>;
+};
+```
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+#### Question 1
 
-### `npm test`
+1a) The code above gives us a TypeError: `Cannot read property 'name' of undefined`. **Why are we getting this TypeError?** Consider _what_ is undefined in this case then you can follow it through to find out why.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1b) How could you fix this error?
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Scenario 2
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+```js
+class Homepage extends React.Component {
+  state = {
+    drinks: ["tea", "americano"]
+  };
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  render() {
+    const { drinks } = this.state;
+    console.log(drinks);
+    return (
+      <div>
+        <h1>NC Coffee Shop</h1>
+        <ul>
+          {drinks.map(drink => {
+            return (
+              <li key={drink}>
+                <h3>{drink}</h3>
+                <button onClick={this.removeDrink(drink)}>press me</button>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    );
+  }
 
-### `npm run eject`
+  removePuppy = drinkToDelete => {
+    const filteredDrinks = this.state.drinks.filter(
+      drink => drink === drinkToDelete
+    );
+    this.setState({ drinks: filteredDrinks });
+  };
+}
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### Question 1
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Ideally, I want it so that when the user clicks on each drink's button, the removeDrink method is invoked.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1a) In reality, when is the removeDrink method being invoked and causing the 'maximum depth exceeded' error?
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1b) What can I change ensure it will be invoked at the correct time?
 
-## Learn More
+#### Question 2
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+I still need access to the intended drink inside the removeDrink method.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2a) How could I still get access to the intended drink inside the removeDrink method?
 
-### Code Splitting
+2b) There are _two_ ways to do this so try to consider both.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+#### Question 3
 
-### Analyzing the Bundle Size
+3a) What should be improved in the removeDrink method?
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+3b)What should be used in this method instead (and why)?
 
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+`
