@@ -1,24 +1,40 @@
 import React from "react";
+import Header from "./components/Header";
 import "./App.css";
 
 class App extends React.Component {
   state = {
-    loggedInUser: { name: "Izzi", id: 12345 }
+    loggedInUser: { name: "Izzi", id: 12345 },
+    drinks: ["tea", "americano"]
   };
 
   render() {
-    const { loggedInUser } = this.state;
+    const { loggedInUser, drinks } = this.state;
     return (
       <div>
         <Header currentUser={loggedInUser} />
-        <p>Lorem ipsum...</p>
+        <ul>
+          {drinks.map(drink => {
+            return (
+              <li key={drink}>
+                <h3>{drink}</h3>
+                <button onClick={this.removeDrink(drink)}>
+                  delete this drink
+                </button>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     );
   }
-}
 
-const Header = ({ loggedInUser }) => {
-  return <h1>Welcome {loggedInUser.name}</h1>;
-};
+  removeDrink = drinkToDelete => {
+    const filteredDrinks = this.state.drinks.filter(
+      drink => drink !== drinkToDelete
+    );
+    this.setState({ drinks: filteredDrinks });
+  };
+}
 
 export default App;
