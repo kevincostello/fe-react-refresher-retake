@@ -8,9 +8,11 @@ Open up the project (which will spring up errors straight away) then look throug
 
 ### Question 1
 
-The code above gives us a TypeError: `Cannot read property 'name' of undefined`.
+Running the code gives us a TypeError: `Cannot read property 'name' of undefined`.
 
-Why are we getting this TypeError and how could we fix it? Consider _what_ is undefined in this case then you can follow it through to find out why.
+Why are we getting this TypeError and how could we fix it? 
+
+_hint:_ Consider _what_ is undefined in this case then you can follow it through to find out why.
 
 ---
 
@@ -26,7 +28,7 @@ How could we fix this error?
 
 Ideally, we want it so that when the user clicks on a drink's delete button, the `removeDrink` method gets invoked.
 
-In reality, when is the removeDrink method being invoked?
+In reality, when is the `removeDrink` method being invoked?
 
 ---
 
