@@ -16,7 +16,7 @@ class App extends React.Component {
         <ul>
           {drinks.map(drink => {
             return (
-              <li key={drink}>
+              <li>
                 <h3>{drink}</h3>
                 <button onClick={this.removeDrink(drink)}>
                   delete this drink
