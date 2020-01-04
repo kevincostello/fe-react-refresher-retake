@@ -12,7 +12,7 @@ Running the code gives us a TypeError: `Cannot read property 'name' of undefined
 
 Why are we getting this TypeError and how could we fix it? 
 
-_hint:_ Consider _what_ is undefined in this case then you can follow it through to find out why.
+_Hint: Consider what is undefined in this case then you can follow it through to find out why._
 
 ---
 
