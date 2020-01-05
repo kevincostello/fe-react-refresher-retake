@@ -40,7 +40,9 @@ How can we change the code to ensure `removeDrink` will be invoked at the correc
 
 ### Question 5
 
-Consider the `setState` inside `removeDrink` - how could this `setState` be improved? Think about the different ways that `setState` can be used and when each method is most appropriate.
+Consider the `setState` inside `removeDrink` - how could this `setState` be improved? 
+
+_Hint: Think about the different ways that `setState` can be used and when each method is most appropriate._
 
 ---
 
