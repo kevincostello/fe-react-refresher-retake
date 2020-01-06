@@ -44,6 +44,8 @@ Consider the `setState` inside `removeDrink` - how could this `setState` be impr
 
 _Hint: Think about the different ways that `setState` can be used and when each method is most appropriate._
 
+Try and implement your improvement
+
 ---
 
 ### Question 6
