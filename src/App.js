@@ -12,13 +12,13 @@ class App extends React.Component {
     const { loggedInUser, drinks } = this.state;
     return (
       <div>
-        <Header currentUser={loggedInUser} />
+        <Header loggedInUser={loggedInUser} />
         <ul>
           {drinks.map(drink => {
             return (
-              <li>
+              <li key={drink}>
                 <h3>{drink}</h3>
-                <button onClick={this.removeDrink(drink)}>
+                <button onClick={() => this.removeDrink(drink)}>
                   delete this drink
                 </button>
               </li>
@@ -30,10 +30,12 @@ class App extends React.Component {
   }
 
   removeDrink = drinkToDelete => {
-    const filteredDrinks = this.state.drinks.filter(
-      drink => drink !== drinkToDelete
-    );
-    this.setState({ drinks: filteredDrinks });
+    this.setState(currentState => {
+      const filteredDrinks = currentState.drinks.filter(
+        drink => drink !== drinkToDelete
+      );
+      return { drinks: filteredDrinks };
+    });
   };
 }
 
